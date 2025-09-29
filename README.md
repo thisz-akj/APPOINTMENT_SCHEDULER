@@ -37,10 +37,10 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 
 ## file to test the AI Scheduler system: https://docs.google.com/document/d/1Qx05CPWy4SKxkQ_MUCQGjEFYj1GBf6X1wIE3LnN4o_0/edit?usp=sharing
 
-## App is live at this server: https://843be965d852.ngrok-free.app
+## App is live at this server: https://4cfc82a2f86e.ngrok-free.app
 Use that with /{URI}
 
-URIs you can find at: https://843be965d852.ngrok-free.app/docs ----------------->use in postman WITH ### GET/ ###
+URIs you can find at:https://4cfc82a2f86e.ngrok-free.app/docs ----------------->use in postman WITH ### GET/ ###
 
 
 OR

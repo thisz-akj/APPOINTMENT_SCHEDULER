@@ -35,6 +35,9 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 
 ---
 
+## file to test the AI Scheduler system: https://docs.google.com/document/d/1Qx05CPWy4SKxkQ_MUCQGjEFYj1GBf6X1wIE3LnN4o_0/edit?usp=sharing
+
+
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository

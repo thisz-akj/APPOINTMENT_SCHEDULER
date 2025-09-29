@@ -76,6 +76,7 @@ response:
 
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  
   "confidence": 1
 }
 
@@ -91,6 +92,7 @@ response:
 
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  
   "confidence": 1
 }
 
@@ -101,6 +103,7 @@ response:
 input:
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  
   "confidence": 1
 }
 
@@ -108,10 +111,14 @@ response:
 
 {
   "entities": {
+  
     "date_phrase": "next Monday",
+    
     "time_phrase": "5pm",
+    
     "department": "dermatology"
   },
+  
   "entities_confidence": 1
 }
 
@@ -121,20 +128,31 @@ input:
 
 {
   "entities": {
+  
     "date_phrase": "next Monday",
+    
     "time_phrase": "5pm",
+    
     "department": "dermatology"
+    
   },
+  
   "entities_confidence": 1
 }
 
 response:
+
 {
   "normalized": {
+  
     "date": "2025-10-06",
+    
     "time": "17:00",
+    
     "tz": "Asia/Kolkata"
+    
   },
+  
   "normalization_confidence": 0.85
 }
 
@@ -144,19 +162,29 @@ input:
 
 {
   "normalized":{
+  
   "normalized": {
+  
     "date": "2025-10-06",
+    
     "time": "17:00",
+    
     "tz": "Asia/Kolkata"
+    
   },
   "normalization_confidence": 0.85
 },
   "entities":{
   "entities": {
+  
     "date_phrase": "next Monday",
+    
     "time_phrase": "5pm",
+    
     "department": "dermatology"
+    
   },
+  
   "entities_confidence": 1
 }
 }
@@ -165,11 +193,17 @@ response:
 
 {
   "appointment": {
+  
     "department": "dermatology",
+    
     "date": "2025-10-06",
+    
     "time": "17:00",
+    
     "tz": "Asia/Kolkata"
+    
   },
+  
   "status": "ok"
   }
 
@@ -188,9 +222,13 @@ response:
 
 {
     "appointment": {
+    
         "department": "dentist",
+        
         "date": "2025-09-30",
+        
         "time": "17:00",
+        
         "tz": "Asia/Kolkata"
     },
     "status": "ok"
@@ -206,9 +244,13 @@ multipart/form-data { file: <image> }
 response:
 {
     "appointment": {
+    
         "department": "dentist",
+        
         "date": "2025-09-30",
+        
         "time": "17:00",
+        
         "tz": "Asia/Kolkata"
     },
     "status": "ok"

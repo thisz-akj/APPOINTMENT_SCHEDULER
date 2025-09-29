@@ -18,6 +18,7 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 - **Appointment Scheduling**
   - Stores and schedules final appointments using Celery
   - Supports async task execution
+  - Schedules the appointment in real time, which actually gives notification at scheduled time and date.
 - **Node.js Gateway**
   - Single unified entry point for client requests
   - API documentation via Swagger

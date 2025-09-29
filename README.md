@@ -249,6 +249,7 @@ input:
 multipart/form-data { file: <image> }
 
 response:
+'''json
 {
     "appointment": {
     

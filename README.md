@@ -38,6 +38,7 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 ### 1. Clone the Repository
 
 git clone https://github.com/thisz-akj/APPOINTMENT_SCHEDULER.git
+
 cd APPOINTMENT_SCHEDULER
 
 
@@ -75,6 +76,19 @@ response:
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
   "confidence": 1
 }
+
+## POST / extract-image
+input: 
+{
+  "input_text": "multipart/form-data { file: <image> }"
+}
+
+response:
+{
+  "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  "confidence": 1
+}
+
 
 ## Post / extract-entities
 input:
@@ -145,6 +159,43 @@ response:
   },
   "status": "ok"
   }
+
+
+## Complete AI Automated SCHEDULER (just use these pipeline APIs to run the whole system)
+
+## For Text input
+## POST /Pipeline/text
+input:
+{ input_text: "Book dentist tomorrow 5pm" }
+response:
+{
+    "appointment": {
+        "department": "dentist",
+        "date": "2025-09-30",
+        "time": "17:00",
+        "tz": "Asia/Kolkata"
+    },
+    "status": "ok"
+}
+
+## For image input
+## POST /Pipeline/text
+input:
+multipart/form-data { file: <image> }
+response:
+{
+    "appointment": {
+        "department": "dentist",
+        "date": "2025-09-30",
+        "time": "17:00",
+        "tz": "Asia/Kolkata"
+    },
+    "status": "ok"
+}
+
+
+
+
 
 
 

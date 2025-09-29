@@ -67,30 +67,37 @@ Pipeline Endpoint (extract → normalize → schedule)
 
 ## POST / extract-text
 input: 
+
 {
   "input_text": "Schedule my appointment with dermatology next Monday at 5 PM"
 }
 
 response:
+
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
   "confidence": 1
 }
 
 ## POST / extract-image
+
 input: 
+
 {
   "input_text": "multipart/form-data { file: <image> }"
 }
 
 response:
+
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
   "confidence": 1
 }
 
 
+
 ## Post / extract-entities
+
 input:
 {
   "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
@@ -98,6 +105,7 @@ input:
 }
 
 response:
+
 {
   "entities": {
     "date_phrase": "next Monday",
@@ -108,7 +116,9 @@ response:
 }
 
 ## POST /normalize-datetime
+
 input:
+
 {
   "entities": {
     "date_phrase": "next Monday",
@@ -129,7 +139,9 @@ response:
 }
 
 ## POST /final-appointment
+
 input:
+
 {
   "normalized":{
   "normalized": {
@@ -150,6 +162,7 @@ input:
 }
 
 response:
+
 {
   "appointment": {
     "department": "dermatology",
@@ -164,10 +177,15 @@ response:
 ## Complete AI Automated SCHEDULER (just use these pipeline APIs to run the whole system)
 
 ## For Text input
+
 ## POST /Pipeline/text
+
 input:
+
 { input_text: "Book dentist tomorrow 5pm" }
+
 response:
+
 {
     "appointment": {
         "department": "dentist",
@@ -179,8 +197,11 @@ response:
 }
 
 ## For image input
+
 ## POST /Pipeline/text
+
 input:
+
 multipart/form-data { file: <image> }
 response:
 {

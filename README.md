@@ -21,6 +21,8 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 - **Node.js Gateway**
   - Single unified entry point for client requests
   - API documentation via Swagger
+- **Postgress Storage**
+  - All scheduled appointments are stored and can be tracked
 - **Dockerized Architecture**
   - Backend, Gateway, and Scheduler run as services
   - Ready to deploy with `docker-compose`

@@ -183,6 +183,19 @@ GOOGLE_API_KEY=your_google_api_key_here
 PORT=3000
 BACKEND_URL=http://backend:8000
 
+
+### Run with Docker Compose
+
+docker-compose up --build
+
+### Then go to localhost/3000  to access API gateway to use APIs
+
+<img width="414" height="89" alt="image" src="https://github.com/user-attachments/assets/24729b36-c50d-4a93-9c3a-9512b7529ae8" />
+
+### Start Celery worker: To check scheduled appointments alarms at scheduled time
+
+celery -A celery_app worker --loglevel=info 
+
 ### How to schedule an appointment and get notification?
 
 When you will use pipeline/text or /pipeline/image : The appointment request you give to the system, will actually get scheduled for that time and  date. 
@@ -202,20 +215,6 @@ At scheduled time and date you will get notification in log:
 
 
 If you are not running locally you can check all the scheduled appointments in database, with /appointments
-
-
-
-### Run with Docker Compose
-
-docker-compose up --build
-
-### Then go to localhost/3000  to access API gateway to use APIs
-
-<img width="414" height="89" alt="image" src="https://github.com/user-attachments/assets/24729b36-c50d-4a93-9c3a-9512b7529ae8" />
-
-### Start Celery worker: To check scheduled appointments alarms at scheduled time
-
-celery -A celery_app worker --loglevel=info 
 
 
 # API Endpoints

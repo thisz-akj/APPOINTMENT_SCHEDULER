@@ -136,7 +136,8 @@ Scales with modern cloud-native architecture.
 This makes it smarter, safer, and more user-friendly than traditional schedulers — a solution designed for the future of healthtech and enterprise scheduling.
 
 
-##APPOINTMENT_SCHEDULER
+## APPOINTMENT_SCHEDULER
+
 <img width="324" height="767" alt="image" src="https://github.com/user-attachments/assets/bb1ae742-f10d-43f3-a66b-2fd703154677" />
 
 

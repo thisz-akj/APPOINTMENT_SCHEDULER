@@ -176,7 +176,7 @@ OR  If you want to run the AI Appointment Scheduler on System
 
 #####  (In backend/ .env)
 
-GOOGLE_API_KEY=your_google_api_key_here 
+GOOGLE_API_KEY=your_google_api_key_here   (generate api key from google ai studio and put in the .env)
 
 ##### (In node_gateway/.env)
 

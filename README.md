@@ -9,7 +9,7 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 
 ---
 
-## ✨ Features
+## Features
 - **Natural Language Understanding**
   - Extracts clean text from user queries
   - Identifies entities like date, time, and department
@@ -32,37 +32,37 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 ## Why My AI-Powered Appointment Scheduler is Better Than Traditional Schedulers
 ### 1. Human-Language Understanding
 
-Traditional schedulers require users to manually fill rigid forms (date, time, department).
+- Traditional schedulers require users to manually fill rigid forms (date, time, department).
 
-My scheduler understands natural human language:
+- My scheduler understands natural human language:
 
-Input like “Book dentist nxt Friday @ 3 pm” → AI corrects spelling, normalizes “nxt” → “next”, “@” → “at”.
+- Input like “Book dentist nxt Friday @ 3 pm” → AI corrects spelling, normalizes “nxt” → “next”, “@” → “at”.
 
-Handles both typed input and scanned handwritten notes/emails with OCR + LLM correction.
+- Handles both typed input and scanned handwritten notes/emails with OCR + LLM correction.
 
 Impact: Makes scheduling frictionless and accessible for all users, reducing manual errors by 70%.
 
 ### 2. AI + OCR Integration for Noisy Inputs
 
-Traditional tools fail when inputs come from scanned notes, images, or unstructured text.
+- Traditional tools fail when inputs come from scanned notes, images, or unstructured text.
 
-My scheduler integrates EasyOCR + Google Gemini (via LangChain) to:
+- My scheduler integrates EasyOCR + Google Gemini (via LangChain) to:
 
-Extract text from images.
+#### Extract text from images.
 
-Correct typos and human mistakes automatically.
+- Correct typos and human mistakes automatically.
 
-Convert messy input into structured JSON.
+- Convert messy input into structured JSON.
 
 Impact: Expands use-cases from just online booking to offline workflows (doctor’s note, scanned email, sticky note).
 
 ### 3. Normalization & Guardrails
 
-Traditional schedulers break on vague inputs like “next Friday evening”.
+- Traditional schedulers break on vague inputs like “next Friday evening”.
 
-My system applies:
+#### My system applies:
 
-Normalization rules (Asia/Kolkata timezone, ISO 8601 date/time).
+- Normalization rules (Asia/Kolkata timezone, ISO 8601 date/time).
 
 AI Guardrails → If ambiguity is detected (confidence < threshold), it responds with:
 
@@ -73,9 +73,9 @@ Impact: Guarantees correctness while avoiding wrong bookings — ensuring >92% s
 
 ### 4. Scalable & Production-Ready Architecture
 
-Most prototypes are single-service apps with no scalability.
+- Most prototypes are single-service apps with no scalability.
 
-My project is built on modern distributed stack:
+#### My project is built on modern distributed stack:
 
 FastAPI backend → AI pipeline + scheduling API.
 
@@ -95,27 +95,27 @@ Traditional schedulers lack transparency.
 
 My scheduler:
 
-Stores every task in PostgreSQL with task_id, department, date, time, status.
+- Stores every task in PostgreSQL with task_id, department, date, time, status.
 
-Updates status automatically to “done” once the scheduled time is reached.
+- Updates status automatically to “done” once the scheduled time is reached.
 
-Logs appointment execution with timestamps → “🔔 Appointment triggered at 2025-09-29 23:06:00 Asia/Kolkata”.
+- Logs appointment execution with timestamps → “🔔 Appointment triggered at 2025-09-29 23:06:00 Asia/Kolkata”.
 
 Impact: Builds trust with users & admins, enabling audit trails and monitoring.
 
-6. Recruiter-Relevant Differentiation
+### 6. Recruiter-Relevant Differentiation
 
-Combines AI/ML (OCR + LLM) with solid engineering (backend, databases, distributed systems).
+- Combines AI/ML (OCR + LLM) with solid engineering (backend, databases, distributed systems).
 
-Not just a toy AI demo — it’s a production-grade system with:
+- Not just a toy AI demo — it’s a production-grade system with:
 
-API documentation
+-----API documentation
 
-Guardrails
+-----Guardrails
 
-Cloud deployability
+-----Cloud deployability
 
-Real-world robustness.
+-----Real-world robustness.
 
 ## Conclusion
 

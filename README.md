@@ -167,16 +167,19 @@ OR  If you want to run the AI Appointment Scheduler on System
 
 ### 1. Clone the Repository
 
-git clone https://github.com/thisz-akj/APPOINTMENT_SCHEDULER.git
+- git clone https://github.com/thisz-akj/APPOINTMENT_SCHEDULER.git
 
-cd APPOINTMENT_SCHEDULER
+- cd APPOINTMENT_SCHEDULER
 
 
 ### Configure Environment Variables
 
-GOOGLE_API_KEY=your_google_api_key_here (in Root .env)
+#####  (In backend/ .env)
 
-(In node_gateway/.env)
+GOOGLE_API_KEY=your_google_api_key_here 
+
+##### (In node_gateway/.env)
+
 PORT=3000
 BACKEND_URL=http://backend:8000
 

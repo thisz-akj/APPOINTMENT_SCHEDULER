@@ -1,6 +1,4 @@
-# 🗓️ AI-Powered Appointment Scheduler Assistant  
-
-# 🗓️ Appointment Scheduler – Backend + Node Gateway
+#  AI-Powered Appointment Scheduler Assistant  
 
 This project is an **AI-powered Appointment Scheduling System** that combines a **FastAPI backend** (Python) with a **Node.js Gateway**. It leverages **Google Gemini LLM** (via LangChain) to process natural language input, extract key appointment details, normalize them, and finally **schedule appointments**.  
 

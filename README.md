@@ -179,6 +179,28 @@ GOOGLE_API_KEY=your_google_api_key_here (in Root .env)
 PORT=3000
 BACKEND_URL=http://backend:8000
 
+### How to schedule an appointment and get notification?
+
+When you will use pipeline/text or /pipeline/image : The appointment request you give to the system, will actually get scheduled for that time and  date. 
+
+#### You can actually check those in the celery_worker logs if you are running project locally in system. (recommended for best demonstaration of AI Appointment scheduler)
+
+To check the logs, run this in terminal in the same folder : docker-compose logs -f celery_worker
+
+When you schedule a task, you will see a "Received" log:
+
+<img width="936" height="43" alt="image" src="https://github.com/user-attachments/assets/22e8a877-7695-4d09-b851-d0fe0fae6c2f" />
+
+
+At scheduled time and date you will get notification in log:
+
+<img width="940" height="89" alt="image" src="https://github.com/user-attachments/assets/ddf884df-e50b-4232-b8a1-741429fc3646" />
+
+
+If you are not running locally you can check all the scheduled appointments in database, with /appointments
+
+
+
 ### Run with Docker Compose
 
 docker-compose up --build

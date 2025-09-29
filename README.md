@@ -38,6 +38,8 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 
 - Input like “Book dentist nxt Friday @ 3 pm” → AI corrects spelling, normalizes “nxt” → “next”, “@” → “at”.
 
+- For words like next day, next {monday/tuesday/other day}, tomorrow, today, morning, aftrnoon, evening etc, My scheduler handles very effectively, and smartly understands which day and date user is asking for, considering the current day and date, so my Scheduler never hallucinates with unclear commands.
+
 - Handles both typed input and scanned handwritten notes/emails with OCR + LLM correction.
 
 Impact: Makes scheduling frictionless and accessible for all users, reducing manual errors by 70%.

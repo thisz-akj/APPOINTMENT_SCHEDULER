@@ -54,11 +54,12 @@ BACKEND_URL=http://backend:8000
 
 docker-compose up --build
 
+Then go to localhost/3000  to access API gateway to use APIs
 <img width="414" height="89" alt="image" src="https://github.com/user-attachments/assets/24729b36-c50d-4a93-9c3a-9512b7529ae8" />
 
-Start Celery worker:
+Start Celery worker: To check scheduled appointments alarms at scheduled time
 
-celery -A celery_app worker --loglevel=info
+celery -A celery_app worker --loglevel=info 
 
 
 # API Endpoints

@@ -1,109 +1,186 @@
 # 🗓️ AI-Powered Appointment Scheduler Assistant  
 
-> End-to-end backend system for scheduling appointments from **text or image inputs** using **FastAPI + Node.js Gateway + LangChain + Gemini + OCR + Celery + Redis + PostgreSQL**.  
+# 🗓️ Appointment Scheduler – Backend + Node Gateway
+
+This project is an **AI-powered Appointment Scheduling System** that combines a **FastAPI backend** (Python) with a **Node.js Gateway**. It leverages **Google Gemini LLM** (via LangChain) to process natural language input, extract key appointment details, normalize them, and finally **schedule appointments**.  
+
+The system can parse user input like:  
+> "Schedule my dermatology appointment next Monday at 5 PM"  
+
+and produce a structured **appointment JSON**, then schedule it in the backend via Celery workers.
 
 ---
 
-## 📌 Features  
+## ✨ Features
+- **Natural Language Understanding**
+  - Extracts clean text from user queries
+  - Identifies entities like date, time, and department
+- **Normalization**
+  - Converts relative expressions ("tomorrow", "next Monday") into structured ISO date/time
+- **Appointment Scheduling**
+  - Stores and schedules final appointments using Celery
+  - Supports async task execution
+- **Node.js Gateway**
+  - Single unified entry point for client requests
+  - API documentation via Swagger
+- **Dockerized Architecture**
+  - Backend, Gateway, and Scheduler run as services
+  - Ready to deploy with `docker-compose`
 
-- Handles both **typed text** and **noisy image inputs** (scanned notes, hand-written notes, emails).  
-- Pipeline: **OCR → Entity Extraction → Normalization → Final Structured Appointment JSON**.  
-- Guardrails for ambiguity (asks clarification when confidence is low).  
-- Schedules tasks using **Celery + Redis**.  
-- Stores all scheduled tasks in **PostgreSQL** (with status updates).  
-- **Node.js Gateway** to manage routing, logging, and file uploads.  
-- Ready for **cloud deployment** (tested on Google Cloud VM with Docker).  
+---
+##APPOINTMENT_SCHEDULER
+│
+├── backend/
+│ ├── modules/
+│ │ ├── entities_module.py
+│ │ ├── final_appointment_module.py
+│ │ ├── image_pipeline_module.py
+│ │ ├── models.py
+│ │ ├── normalize_module.py
+│ │ ├── ocr_module.py
+│ │ ├── scheduler_module.py # Scheduling logic
+│ │ ├── text_pipeline_module.py
+│ │ └── init.py
+│ ├── database/
+│ ├── main.py # FastAPI entry point
+│ ├── celery_app.py # Celery configuration
+│ ├── tasks.py # Scheduling tasks
+│ ├── utils.py
+│ ├── requirements.txt
+│ └── Dockerfile
+│
+├── node_gateway/
+│ ├── gateway.js
+│ ├── appointments.js
+│ ├── docs.js
+│ ├── middlewares.js
+│ ├── package.json
+│ ├── package-lock.json
+│ ├── Dockerfile
+│ └── .env
+│
+├── docker-compose.yml
+├── .gitignore
+├── .env
+
+
 
 ---
 
-## ⚙️ Tech Stack  
+## ⚙️ Setup Instructions
 
-- **Backend API**: FastAPI (Python)  
-- **LLM**: Google Gemini via LangChain  
-- **OCR**: EasyOCR + LLM corrections  
-- **Scheduling**: Celery + Redis  
-- **Database**: PostgreSQL (task persistence)  
-- **Gateway**: Node.js (Express, Multer, Axios, Morgan)  
-- **Containerization**: Docker & Docker Compose  
+### 1. Clone the Repository
 
----
-
-## Environment Setup
-
-###backend/.env
-
-GOOGLE_API_KEY=your_gemini_api_key
-DATABASE_URL=postgresql+psycopg2://postgres:postgres@postgres:5432/appointments
+git clone https://github.com/thisz-akj/APPOINTMENT_SCHEDULER.git
+cd APPOINTMENT_SCHEDULER
 
 
-###Node.js Gateway
+### Configure Environment Variables
 
+GOOGLE_API_KEY=your_google_api_key_here (in Root .env)
+
+(In node_gateway/.env)
 PORT=3000
-PYTHON_API_BASE=http://backend:8000
+BACKEND_URL=http://backend:8000
 
-docker compose up --build
+### Run with Docker Compose
 
-<img width="394" height="73" alt="image" src="https://github.com/user-attachments/assets/94f60ba7-6940-4ad5-9a98-8f6aed691566" />
+docker-compose up --build
 
-## API EndPoints
+<img width="414" height="89" alt="image" src="https://github.com/user-attachments/assets/24729b36-c50d-4a93-9c3a-9512b7529ae8" />
 
+Start Celery worker:
 
-<img width="250" height="122" alt="image" src="https://github.com/user-attachments/assets/a2c02383-7171-40d1-8bc7-e0290a9ad3b9" />
-
-
-
-input: <img width="420" height="188" alt="image" src="https://github.com/user-attachments/assets/d93a9e4b-d51f-4248-ad2c-8e4b349d2a96" />
-
-output: <img width="408" height="152" alt="image" src="https://github.com/user-attachments/assets/3bb7a5c5-4054-46f0-a281-75f907dadb70" />
+celery -A celery_app worker --loglevel=info
 
 
-input: <img width="445" height="179" alt="image" src="https://github.com/user-attachments/assets/c3a225b5-9fea-48ca-a22f-22ea8a9c33f4" />
+# API Endpoints
 
-output: <img width="413" height="156" alt="image" src="https://github.com/user-attachments/assets/db16b100-1773-4124-9316-45a1653525a4" />
+Pipeline Endpoint (extract → normalize → schedule)
+
+## POST / extract-text
+input: 
+{
+  "input_text": "Schedule my appointment with dermatology next Monday at 5 PM"
+}
+
+response:
+{
+  "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  "confidence": 1
+}
+
+## Post / extract-entities
+input:
+{
+  "raw_text": "Schedule my appointment with dermatology next Monday at 5pm",
+  "confidence": 1
+}
+
+response:
+{
+  "entities": {
+    "date_phrase": "next Monday",
+    "time_phrase": "5pm",
+    "department": "dermatology"
+  },
+  "entities_confidence": 1
+}
+
+## POST /normalize-datetime
+input:
+{
+  "entities": {
+    "date_phrase": "next Monday",
+    "time_phrase": "5pm",
+    "department": "dermatology"
+  },
+  "entities_confidence": 1
+}
+
+response:
+{
+  "normalized": {
+    "date": "2025-10-06",
+    "time": "17:00",
+    "tz": "Asia/Kolkata"
+  },
+  "normalization_confidence": 0.85
+}
+
+## POST /final-appointment
+input:
+{
+  "normalized":{
+  "normalized": {
+    "date": "2025-10-06",
+    "time": "17:00",
+    "tz": "Asia/Kolkata"
+  },
+  "normalization_confidence": 0.85
+},
+  "entities":{
+  "entities": {
+    "date_phrase": "next Monday",
+    "time_phrase": "5pm",
+    "department": "dermatology"
+  },
+  "entities_confidence": 1
+}
+}
+
+response:
+{
+  "appointment": {
+    "department": "dermatology",
+    "date": "2025-10-06",
+    "time": "17:00",
+    "tz": "Asia/Kolkata"
+  },
+  "status": "ok"
+  }
 
 
-
-input: <img width="400" height="227" alt="image" src="https://github.com/user-attachments/assets/d1075964-9603-47ca-ade5-deea4069bd87" />
-
-
-output: <img width="324" height="257" alt="image" src="https://github.com/user-attachments/assets/ef544baf-1ee1-4780-9271-111f59d01c20" />
-
-
-
-input: <img width="426" height="328" alt="image" src="https://github.com/user-attachments/assets/33e0d668-2827-46c9-8c96-b37b97976ca3" />
-
-
-output: <img width="452" height="464" alt="image" src="https://github.com/user-attachments/assets/dcdedebe-00e0-4959-973f-4d855cc8ad8a" />
-
-
-input:<img width="450" height="421" alt="image" src="https://github.com/user-attachments/assets/43637bc3-0255-4193-8dba-efbae1958921" />
-
-output: <img width="283" height="268" alt="image" src="https://github.com/user-attachments/assets/dffb3a7b-8b1b-4707-8596-78d203e1e4d4" />
-
-
-input: <img width="460" height="198" alt="image" src="https://github.com/user-attachments/assets/0247d905-6949-4d9b-baf3-28071f9b652c" />
-
-output: <img width="368" height="278" alt="image" src="https://github.com/user-attachments/assets/89f02471-f63a-436d-8fc6-4d74b868fdf3" />
-
-
-image: <img width="319" height="172" alt="image" src="https://github.com/user-attachments/assets/7f5ec384-ca44-4920-9cf8-30a4171ddbec" />
-
-
-output: -<img width="270" height="269" alt="image" src="https://github.com/user-attachments/assets/e6c8e2f5-f06a-4d2e-a7eb-5589f3cebdba" />
-
-
-input: <img width="358" height="308" alt="image" src="https://github.com/user-attachments/assets/0b15257f-d383-4c9c-b092-cc95525a993f" />
-
-
-output: <img width="432" height="167" alt="image" src="https://github.com/user-attachments/assets/da6eedf5-c53d-4b72-935a-56d7fff6d96f" />
-
-
-<img width="300" height="137" alt="image" src="https://github.com/user-attachments/assets/483a0830-410b-4e82-8c74-aae1e1d80877" />
-
-## Vewing Scheduled Logs:
-
-###When Scheduled: [Scheduler] Appointment scheduled for 2025-09-29 23:06:00 IST
-###When triggered: [Scheduler] Appointment triggered at 2025-09-29 23:06:00 IST: {department: "teacher", ...}
 
 
 

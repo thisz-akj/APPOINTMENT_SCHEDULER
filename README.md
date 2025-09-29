@@ -27,39 +27,7 @@ and produce a structured **appointment JSON**, then schedule it in the backend v
 
 ---
 ##APPOINTMENT_SCHEDULER
-│
-├── backend/
-│ ├── modules/
-│ │ ├── entities_module.py
-│ │ ├── final_appointment_module.py
-│ │ ├── image_pipeline_module.py
-│ │ ├── models.py
-│ │ ├── normalize_module.py
-│ │ ├── ocr_module.py
-│ │ ├── scheduler_module.py # Scheduling logic
-│ │ ├── text_pipeline_module.py
-│ │ └── init.py
-│ ├── database/
-│ ├── main.py # FastAPI entry point
-│ ├── celery_app.py # Celery configuration
-│ ├── tasks.py # Scheduling tasks
-│ ├── utils.py
-│ ├── requirements.txt
-│ └── Dockerfile
-│
-├── node_gateway/
-│ ├── gateway.js
-│ ├── appointments.js
-│ ├── docs.js
-│ ├── middlewares.js
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── Dockerfile
-│ └── .env
-│
-├── docker-compose.yml
-├── .gitignore
-├── .env
+<img width="324" height="767" alt="image" src="https://github.com/user-attachments/assets/bb1ae742-f10d-43f3-a66b-2fd703154677" />
 
 
 

@@ -138,7 +138,8 @@ This makes it smarter, safer, and more user-friendly than traditional schedulers
 
 ## APPOINTMENT_SCHEDULER
 
-<img width="324" height="767" alt="image" src="https://github.com/user-attachments/assets/bb1ae742-f10d-43f3-a66b-2fd703154677" />
+<img width="270" height="884" alt="image" src="https://github.com/user-attachments/assets/440b866b-4ab4-4ca8-9920-cec62e2ab883" />
+
 
 
 

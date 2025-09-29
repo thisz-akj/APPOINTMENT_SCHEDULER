@@ -172,9 +172,11 @@ input:
     "tz": "Asia/Kolkata"
     
   },
+  
   "normalization_confidence": 0.85
 },
   "entities":{
+  
   "entities": {
   
     "date_phrase": "next Monday",
@@ -256,6 +258,9 @@ response:
     "status": "ok"
 }
 
+## To get details of all the apis and how to use them : GET /docs
+
+## To get list of all the scheduled tasks/appointments: GET/appointments
 
 
 

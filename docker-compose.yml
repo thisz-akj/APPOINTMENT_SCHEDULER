@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    volumes:
+      - ./backend:/app          # 👈 Hot reload
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8001:8000"
+    env_file:
+      - backend/.env
+    depends_on:
+      - postgres
+    networks:
+      - appnet
+
+  node_gateway:
+    build:
+      context: .
+      dockerfile: node_gateway/Dockerfile
+    container_name: node_gateway
+    volumes:
+      - ./node_gateway:/app 
+      - /app/node_modules       # 👈 Hot reload
+    command: npm run dev        # 👈 Nodemon for auto reload
+    ports:
+      - "3000:3000"
+    env_file:
+      - node_gateway/.env
+    depends_on:
+      - backend
+    networks:
+      - appnet
+
+  redis:
+    image: redis:7
+    container_name: redis
+    networks:
+      - appnet
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: plum
+      POSTGRES_PASSWORD: plum123
+      POSTGRES_DB: appointments
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: celery_worker
+    volumes:
+      - ./backend:/app          # 👈 Hot reload
+    command: celery -A celery_app.celery worker --loglevel=INFO
+    depends_on:
+      - backend
+      - redis
+      - postgres
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  postgres_data:

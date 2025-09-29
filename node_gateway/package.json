@@ -1,0 +1,23 @@
+{
+    "name": "node-gateway",
+    "version": "1.0.0",
+    "description": "Node.js Express gateway for FastAPI appointment scheduler",
+    "main": "gateway.js",
+    "type": "module",
+    "scripts": {
+        "start": "node gateway.js",
+        "dev": "nodemon gateway.js"
+    },
+    "dependencies": {
+        "axios": "^1.7.0",
+        "express": "^4.19.2",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1",
+        "form-data": "^4.0.0",
+        "dotenv": "^16.4.5"
+
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}

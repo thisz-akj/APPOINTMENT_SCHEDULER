@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+langchain
+langchain-google-genai
+pydantic
+python-dotenv
+python-dateutil
+pytz
+Pillow
+easyocr
+python-multipart
+celery[redis]
+SQLAlchemy
+psycopg2-binary
+alembic

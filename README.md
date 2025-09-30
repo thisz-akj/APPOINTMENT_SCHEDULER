@@ -147,7 +147,7 @@ This makes it smarter, safer, and more user-friendly than traditional schedulers
 
 ## file to test the AI Scheduler system: https://docs.google.com/document/d/1Qx05CPWy4SKxkQ_MUCQGjEFYj1GBf6X1wIE3LnN4o_0/edit?usp=sharing
 
-## App is live at this server: https://4cfc82a2f86e.ngrok-free.app        
+## App is live at this server: https://64349bab6190.ngrok-free.app       
 Use that with /{URI}
 
 
@@ -155,7 +155,7 @@ Use that with /{URI}
 ## Google Drive: https://drive.google.com/drive/folders/1dPmaDvvy9f__n3C0cSyfAY1BjAe5hVyL?usp=sharing
 
 
-URIs you can find at:https://4cfc82a2f86e.ngrok-free.app/docs ----------------->use in postman WITH ### GET/ ###
+URIs you can find at: https://64349bab6190.ngrok-free.app/docs ----------------->use in postman WITH ### GET/ ###
 
 
 
